@@ -2,14 +2,16 @@ var express = require('express'),
     body = require('body-parser'),
     PORT = process.env.PORT | 3030,
     app = express(),
-    ejs = require("ejs")
+    ejs = require("ejs"),
+    path = require('path')
 
 
-app.use(express.static("public"));
+app.use(express.static('./app/public'));
 app.use(body.urlencoded({extended: true}));
 app.use(body.json());
 app.set("view engine", "ejs")
-var routes = require("./controllers/friendController")
+app.set('views', path.join(__dirname, './app/views'))
+var routes = require("./app/controllers/friendController")
 app.use(routes)
 
 
