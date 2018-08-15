@@ -18,6 +18,10 @@ router.get("/api/friends", function(req, res) {
     res.json(friends)
 })
 
+router.get("/*", function(req, res) {
+    res.redirect("/")
+})
+
 router.post("/api/friends", function(req, res){
     
     var newFriend = req.body
